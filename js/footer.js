@@ -104,7 +104,7 @@ document.getElementById("footer").innerHTML = `
                 <div class="">
                     <div class="fw-semibold">
                         <span><i class="fs-5 fa-solid fa-location-dot fs-6 me-2"></i></span>
-                       C-12 Block-B Gulshan-e-Jamal, Karachi Sindh, Pakistan.
+                      Main Rashid Minhas Road, Karachi Sindh, Pakistan.
                     </div>
                     <div class="fw-semibold">
                         <span><i class="fs-5 fa-solid fa-phone fs-6 me-2"></i></span>

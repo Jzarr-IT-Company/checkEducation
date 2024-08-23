@@ -76,6 +76,7 @@
         }
         const idCookie = getCookie('id');
         const isCourse = getCookie('isCourse');
+        const tokenCookie = getCookie('token');
         const token = getCookie('token');
         // Get the current URL
         const url = window.location.href;
@@ -87,8 +88,23 @@
         const id = urlObj.searchParams.get('cid');
         const sid = urlObj.searchParams.get('id');
         const cn = urlObj.searchParams.get('cn');
+        let email ;
         updatedLocalstorage(cn)
-        console.log(cn)
+        const getStudentData=()=>{
+            axios.get(`https://main-server-zeta.vercel.app/getStudentData/${idCookie}`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${tokenCookie}`
+                }
+            }).then((res)=>{
+                let data = res.data.data;
+                data.map((data)=>{
+                    console.log(data.email)
+                    email=data.email;
+                })
+            })
+        }
+        getStudentData()
         document.querySelector("#buyMoreClass").addEventListener('click', () => {
             if (!token) {
                 localStorage.setItem("buyMore", true)
@@ -123,7 +139,7 @@
                             timer: 1500
                         }).then((result) => {
                             if (result) {
-                               window.location.href =`https://payment-gateway-beryl.vercel.app/?ac=2700`
+                               window.location.href = `https://payment-gateway-beryl.vercel.app/?ac=2700&e=${email}`
                             }
                         })
                     })
