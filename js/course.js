@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).then((result) => {
                         if (result) {
                             // window.location.href='./success.html'
-                            window.location.href = `https://payment-gateway-beryl.vercel.app/?ac=${totalCost}`
+                            window.location.href = `https://payment-gateway-beryl.vercel.app/?ac=${btoa(totalCost)}`
                         }
                     })
                 })
