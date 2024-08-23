@@ -51,7 +51,3 @@ const deleteFromLocalStorage = (valuesToRemove) => {
     window.location.href = "./index.html"
     console.log("Updated LocalStorage data:", existingData);
 };
-
-// Usage example
-
-
