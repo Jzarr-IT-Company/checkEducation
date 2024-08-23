@@ -42,11 +42,13 @@ const deleteFromLocalStorage = (valuesToRemove) => {
     // let emptyCourses = [];
     axios.post('https://main-server-zeta.vercel.app/courseUpdate', { id: idCookie, courses: existingData })
         .then(response => {
-            console.log(response)
+            window.location.href = "./index.html"
         })
         .catch(error => {
             console.error('Error', error.message);
+            window.location.href = "./index.html"
         });
+    window.location.href = "./index.html"
     console.log("Updated LocalStorage data:", existingData);
 };
 
