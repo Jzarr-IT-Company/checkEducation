@@ -40,11 +40,11 @@ document.querySelector("#createAccount").addEventListener("click", () => {
     //     isValid = false;
     // }
 
-    // Last Name Validation
-    if (!nameRegex.test(lname)) {
-        document.querySelector("#lnameError").innerText = 'Last name must contain at least 2 alphabetic characters.';
-        isValid = false;
-    }
+    // // Last Name Validation
+    // if (!nameRegex.test(lname)) {
+    //     document.querySelector("#lnameError").innerText = 'Last name must contain at least 2 alphabetic characters.';
+    //     isValid = false;
+    // }
 
     // Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
