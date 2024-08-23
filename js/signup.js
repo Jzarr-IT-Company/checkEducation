@@ -1,12 +1,12 @@
- // Get the current URL
- const url = window.location.href;
+// Get the current URL
+const url = window.location.href;
 
- // Create a new URL object
- const urlObj = new URL(url);
+// Create a new URL object
+const urlObj = new URL(url);
 
- // Get the parameter value by its name
- const cn = urlObj.searchParams.get('cn');
- console.log(cn)
+// Get the parameter value by its name
+const cn = urlObj.searchParams.get('cn');
+console.log(cn)
 
 document.querySelector("#createAccount").addEventListener("click", () => {
     document.getElementById('loader').style.display = 'flex';
@@ -17,7 +17,7 @@ document.querySelector("#createAccount").addEventListener("click", () => {
     let pass = document.querySelector("#password").value.trim();
     let phoneInput = document.getElementById('phoneNo').value;
     let phoneError = document.getElementById('phoneError');
-    
+
     let isValid = true;
 
     // Clear previous error messages
@@ -32,8 +32,8 @@ document.querySelector("#createAccount").addEventListener("click", () => {
     // Validate phone number length
     if (cleanedPhone.length !== 11) {
         phoneError.textContent = 'Phone number must be exactly 11 digits.';
-        document.getElementById('phoneError').innerHTML="invalid phone number"; // Add Bootstrap invalid class for visual feedback
-    } 
+        document.getElementById('phoneError').innerHTML = "invalid phone number"; // Add Bootstrap invalid class for visual feedback
+    }
     // const nameRegex = /^[a-zA-Z]{2,}$/;
     // if (!nameRegex.test(fname)) {
     //     document.querySelector("#fnameError").innerText = 'First name must contain at least 2 alphabetic characters.';
@@ -69,7 +69,7 @@ document.querySelector("#createAccount").addEventListener("click", () => {
             name: name,
             email: email,
             password: pass,
-            courses:cn,
+            courses: cn,
             phone: phoneInput
         })
             .then(response => {
@@ -89,7 +89,7 @@ document.querySelector("#createAccount").addEventListener("click", () => {
                             if (isOnline) {
                                 localStorage.removeItem("onlineBuy")
                                 window.location.href = `https://payment-gateway-beryl.vercel.app/?ac=2700`
-                            }else if(buyMore){
+                            } else if (buyMore) {
                                 localStorage.removeItem("buyMore")
                                 window.location.href = "./selecteCourses.html"
                             }
@@ -102,6 +102,14 @@ document.querySelector("#createAccount").addEventListener("click", () => {
                     // document.cookie = `token=${response.data.token.token}; path=/; max-age=${maxAge}; Secure; SameSite=Strict`;
                     // document.cookie = `id=${response.data.id}; path=/; max-age=${maxAge}; Secure; SameSite=Strict`;
                     // window.location.href = "./profile.html"
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Account already exists",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             })
             .catch(error => {
