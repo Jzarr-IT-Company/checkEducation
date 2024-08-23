@@ -106,6 +106,13 @@ document.querySelector("#createAccount").addEventListener("click", () => {
             })
             .catch(error => {
                 document.getElementById('loader').style.display = 'none';
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Some thing went wrong",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 console.error('Error creating account:', error.message);
             });
     }
