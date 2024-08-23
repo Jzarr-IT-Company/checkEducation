@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="shortcut icon" href="/public/logo.svg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/loader.css">
+  <style>
+    /* styles.css */
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .sidebar a.active {
+      background-color: #007bff;
+      /* Primary color */
+      color: #ffffff;
+      /* White text */
+    }
+
+    .sidebar a:hover {
+      background-color: #36b913;
+      /* Darker primary color on hover */
+      color: #ffffff !important;
+      /* White text on hover */
+    }
+  </style>
+  <script>
+    // Function to get a specific cookie value by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Function to check if the user has a valid token
+    const checkToken = () => {
+      const tokenCookie = getCookie('token');
+
+      if (!tokenCookie) {
+        // No token found; redirect to the home page
+        window.location.href = './index.html'; // Change this to your home page URL
+      }
+    }
+
+    // Call the function to check token and potentially redirect the user
+    checkToken();
+  </script>
+
+</head>
+
+<body>
+  <!-- Loader HTML -->
+  <div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+  </div>
+  <!-- navbar -->
+
+  <nav class="navbar sticky-top px-4" style="background-color: #f5f5f5; box-shadow: 0px 0px 7px;">
+    <div class="container-fluid">
+      <div class="d-flex">
+        <button class="border-none fs-4 d-lg-none d-md-none d-xl-none d-xxlg-none"
+          style="border: none; background: transparent;" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <a href="#" class="d-flex ms-3"><img src="./Assets/logo.svg" width="100" alt="logo"></a>
+      </div>
+      <div class="d-none d-lg-flex d-md-flex d-xl-flex d-xxl-flex align-items-center" style="gap: 10px;">
+        <div class="border" style="border-radius: 50%;">
+          <img id="myImage" src="assets/user.png" class="border" alt="picture" width="60" height="60"
+            style="border-radius: 50%;">
+        </div>
+        <div class="mt-3">
+          <p class="text-capitalize" style="color: #818181; margin-bottom: 0;" id="nname"></p>
+          <p  style="color: #818181; margin-top: 0;" id="nemail"></p>
+      </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-2 col-md-3 d-none d-lg-block d-md-block d-xl-block d-xxlg-block border position-fixed"
+        style="height:90vh; overflow-y: auto;">
+        <div class="sidebar bg-light">
+          <a href="./dashboard.html" class="text-dark text-decoration-none"
+            id="dashboardLink"><strong>Dashboard</strong></a>
+          <a href="./index.html" class="text-dark text-decoration-none" id="homeLink"><strong>Home</strong></a>
+          <a href="./settings.html" class="text-dark text-decoration-none"
+            id="settingsLink"><strong>Settings</strong></a>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="col-lg-10 col-md-9 offset-lg-2 offset-md-3">
+        <div class="container mt-4">
+          <div class="row" id="showBuyCourses">
+            <div class="col-12 mb-3 d-flex justify-content-end">
+              <a href="./selecteCourses.html" class="btn btn-success"><span><i class="fa-solid fa-plus me-2"></i></span>
+                Add Courses</a>
+              <button class="btn btn-light" onclick="addd()">Reload page</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-3 d-flex justify-content-center align-items-center" style="height: 60vh;">
+        <p class="fw-semibold text-secondary fs-5" id="courseNotFound"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        <div class="d-flex">
+          <img id="myProfileImage" src="" class="border" alt="picture" width="60" height="60"
+            style="border-radius: 50%;">
+          <p class="mt-4 ms-3" style="color: #818181; font-size: 15px;" id="myemail"></p>
+        </div>
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="sidebar bg-light">
+        <a href="./dashboard.html" class="text-dark text-start text-decoration-none"
+          id="dashboardLink"><strong>Dashboard</strong></a>
+        <a href="./index.html" class="text-dark text-start text-decoration-none" id="homeLink"><strong>Home</strong></a>
+        <a href="./settings.html" class="text-dark text-start text-decoration-none"
+          id="settingsLink"><strong>Settings</strong></a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- <script src="./js/loader.js"></script> -->
+  <script src="./js/getStudentData.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    // const isCourse = getCookie('isCourse');
+    const addd = () => {
+      window.location.reload()
+    }
+    // script.js
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get the current URL path
+      const currentPath = window.location.pathname;
+
+      // Function to set the active link
+      const setActiveLink = () => {
+        // Select all links in the sidebar
+        const links = document.querySelectorAll('.sidebar a');
+
+        links.forEach(link => {
+          // Check if the href of the link matches the current path
+          if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+            // Store the active link in localStorage
+            localStorage.setItem('activeLink', link.id);
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      };
+
+      // Set active link on page load
+      setActiveLink();
+
+      // Optional: Set active link on page refresh
+      const activeLinkId = localStorage.getItem('activeLink');
+      if (activeLinkId) {
+        const activeLink = document.getElementById(activeLinkId);
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

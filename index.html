@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jzarr Education-IT Courses</title>
+    <link rel="shortcut icon" href="/public/logo.svg" type="image/x-icon">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <!-- Loader HTML -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+    <section id="header" style="border: none; background: transparent;"></section>
+    <section class="sticky-top" id="navbar"></section>
+    <!-- slider -->
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card ">
+                    <img src="./Assets/size2.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./Assets/size3.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./Assets/size1.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="background-color:black ;">
+                <marquee behavior="left">
+                    <p class="fw-semibold fs-5" style="color:white;">JZARR IT Company is offering free courses with a
+                        nominal enrollment and support fee of 2700 PKR each course. Upon successfully passing the final
+                        test and
+                        interview, participants will be eligible for exclusive internship and job opportunities with
+                        JZARR IT Company. (You can contact our support team for any queries.)</p>
+                </marquee>
+            </div>
+        </div>
+    </div>
+
+    <!-- courses cards -->
+    <a href=""></a>
+    <div id="loadingIndicator"></div>
+    <div class="container-fluid mb-5 mt-3 px-3">
+        <h5 class="text-center mb-3">Our courses will be updated time to time</h5>
+        <div class="d-flex justify-content-between py-3 align-items-center">
+            <h3>Offered <span class="text-success">Online Courses</span></h3>
+            <a href="./courses.html" class="fw-semibold" style="color: #00631a;">View All Courses</a>
+        </div>
+        <div class="row" style="gap: 10px 0px;" id="showCourses">
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="btn btn-success" id="viewcourse2">View All Courses</button>
+        </div>
+    </div>
+    <!-- review slide  -->
+    <div class="container-fluid justify-content-center align-items-center">
+        <h3 style="text-align: center; padding-bottom: 4px; padding-top: 1px;">Reviews From Our Satisfied Students</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5 mt-5">This is the second program I have taken with
+                                                Jzarr. I
+                                                love how I can work at my own pace. The tutors are fantastic and so
+                                                helpful.</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Alisha Hussain</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5">Fantastic course. Easy to follow. Plenty of help
+                                                if
+                                                requested. Highly recommend to others.</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Subhan Khan</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5">In-depth course material and very organised
+                                                Assessment
+                                                instructions. Very quick results as well!</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Abdul Rehman</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5">Very helpful course and nice tutors. I learned a
+                                                lot
+                                                throughout the course. It will definitely help when I start my new
+                                                career.</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Haider Ali</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5">I have had the best online classes, this was the
+                                                best
+                                                decision I have ever made to join Jzarr Education.</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Shehzad Durrani</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card  mx-2" style="width: 50rem;">
+                                        <div class="card-body">
+                                            <img src="./Assets/user.jpeg" alt=""
+                                                style="height: 70; width: 70px; border-radius: 50%;">
+                                            <p class="card-text mt-5">I really enjoyed this course! I learnt everything
+                                                at my
+                                                home and received wonderful feedback!</p>
+                                            <h6 class="card-subtitle mb-2 text-body-secondary">Sania Amin</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- second banner -->
+    <div class="container-fluid my-5" style="background-color: #00631a;">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+                <img src="./Assets/CEO.webp" class="img-fluid" width="280px" alt="">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h3 class="text-white fw-bold">Quality IT Education From Qualify Instructors</h3>
+                <p class="text-white">Transform your IT skills with JZARR Education advanced 2024 course across
+                    Pakistan. Get certified with onsite or online training and unlock new opportunities for a Rewarding
+                    Career, Business Growth, and Increased Revenue. Join us now and see the results.</p>
+            </div>
+        </div>
+    </div>
+    <!-- expected from jzarr -->
+
+    <div class="container-fluid py-5 bg-light">
+        <div class="row d-flex">
+            <h2 class="text-center">What To Expect From A <span class="text-success">JZARR Education Course?</span></h2>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                <img src="Assets/check-mark.png" class="img-fluid" width="80px" alt="">
+                <h3>Expert Faculties</h3>
+                <p>our expert faculty blends extensive industry experience with advanced knowledge to provide practical,
+                    hands-on IT training. We equip students with the essential skills to excel in the ever-evolving tech
+                    landscape.</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center"><img src="Assets/check-mark.png" class="img-fluid "
+                    width="80px" alt="">
+                <h3>Career Support</h3>
+                <p>At Jzarr Institute, our strong industry connections provide students with job placement assistance
+                    and valuable referrals from top companies, facilitating a seamless transition into the tech
+                    workforce.</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center"><img src="Assets/check-mark.png" class="img-fluid "
+                    width="80px" alt="">
+                <h3>Student Focus</h3>
+                <p>we prioritize individual student success by ensuring hands-on training and personalized support. We
+                    offer one-on-one assistance to address any challenges, making sure every student receives the
+                    attention needed to master their skills effectively.</p>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 text-center"><img src="Assets/check-mark.png" class="img-fluid "
+                    width="80px" alt="">
+                <h3>Highly Experienced</h3>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 text-center"><img src="Assets/check-mark.png" class="img-fluid "
+                    width="80px" alt="">
+                <h3>Highly Experienced</h3>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+            </div> -->
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center"><img src="Assets/check-mark.png" class="img-fluid "
+                    width="80px" alt="">
+                <h3>Real-World Experience</h3>
+                <p> we provide real-world experience by involving students in our live, ongoing projects and campaigns.
+                    This hands-on approach ensures that every student gains practical, hassle-free learning and insights
+                    directly from active industry work.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-5 overlay"
+        style="background-image: url('./Assets/online-tutoring-image.png'); background-attachment: fixed; background-size: cover;">
+        <div class="row py-4 d-flex justify-content-center align-items-center text-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card bg-dark text-white overlay-card">
+                    <div class="card-body">
+                        <img src="./Assets/icon3.png" class="img-fluid" width="90px" alt="">
+                        <p class="fs-5 fw-semibold">Total Signup Students</p>
+                        <p class="text-center fw-bold fs-1" id="signupCount">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card bg-dark text-white overlay-card">
+                    <div class="card-body">
+                        <img src="./Assets/icon2.png" class="img-fluid" width="90px" alt="">
+                        <p class="fs-5 fw-semibold">Total Enrolled Students</p>
+                        <p class="text-center fw-bold fs-1" id="enrollCount">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card bg-dark text-white overlay-card">
+                    <div class="card-body">
+                        <img src="./Assets/icon1.png" class="img-fluid" width="90px" alt="">
+                        <p class="fs-5 fw-semibold">Total Pass out Students</p>
+                        <p class="text-center fw-bold fs-1" id="passCount">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- third banner -->
+    <!-- <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center py-4">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <img src="./Assets/contactUs.jpg" class="img-fluid rounded-3" alt="">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Let’s Talk About Services Solutions With Us</h2>
+                <button class="btn fw-semibold">Conatct Us</button>
+            </div>
+        </div>
+    </div> -->
+
+    <section id="footer"></section>
+
+
+
+
+    <script src="./js/navbar.js"></script>
+    <script src="./js/headre.js"></script>
+    <script src="js/coursenavigate.js"></script>
+    <script src="./js/showCourses.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+        integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+
+    <script>
+        // function getCookie(name) {
+        //     const value = `; ${document.cookie}`;
+        //     const parts = value.split(`; ${name}=`);
+        //     if (parts.length === 2) return parts.pop().split(';').shift();
+        // }
+        // const idCookie = getCookie('id');
+        // const isCourse = getCookie('isCourse');
+        // const clearCookiesStoreCourses = () => {
+        //     let emptyCourses = [];
+        //     if (!isCourse) {
+        //         axios.post('https://main-server-zeta.vercel.app/courseUpdate', { id: idCookie, courses: emptyCourses })
+        //             .then(response => {
+        //             })
+        //             .catch(error => {
+        //             });
+        //     }
+        // }
+        // clearCookiesStoreCourses()
+        // function rollToNumber(elementId, finalNumber, duration) {
+        //     const numberElement = document.getElementById(elementId);
+        //     let currentNumber = 0;
+        //     const startTime = new Date().getTime();
+
+        //     function updateNumber() {
+        //         const elapsedTime = new Date().getTime() - startTime;
+
+        //         if (elapsedTime < duration) {
+        //             currentNumber = Math.floor(Math.random() * finalNumber);
+        //             numberElement.textContent = currentNumber + '+';
+        //             requestAnimationFrame(updateNumber);
+        //         } else {
+        //             numberElement.textContent = finalNumber + '+';
+        //         }
+        //     }
+
+        //     updateNumber();
+        // }
+
+        // window.onload = function () {
+        //     rollToNumber('signupCount', 2000, 3000);
+        //     rollToNumber('enrollCount', 1200, 3000);
+        //     rollToNumber('passCount', 800, 3000);
+        // };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.link');
+            const offcanvasElement = document.getElementById('offcanvasExample');
+            const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+
+            links.forEach(link => {
+                link.addEventListener('click', function () {
+                    // Remove the active class from all links
+                    links.forEach(l => l.classList.remove('active'));
+                    // Add the active class to the clicked link
+                    this.classList.add('active');
+                    // Close the sidebar
+                    offcanvas.hide();
+                });
+            });
+        });
+
+
+
+
+        function rollToNumber(elementId, finalNumber, duration) {
+            const numberElement = document.getElementById(elementId);
+            let currentNumber = 0;
+            const startTime = new Date().getTime();
+
+            function updateNumber() {
+                const elapsedTime = new Date().getTime() - startTime;
+
+                if (elapsedTime < duration) {
+                    currentNumber = Math.floor(Math.random() * finalNumber);
+                    numberElement.textContent = currentNumber + '+';
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    numberElement.textContent = finalNumber + '+';
+                }
+            }
+
+            updateNumber();
+        }
+
+        window.onload = function () {
+            rollToNumber('signupCount', 2000, 3000);
+            rollToNumber('enrollCount', 1200, 3000);
+            rollToNumber('passCount', 800, 3000);
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.link');
+            const offcanvasElement = document.getElementById('offcanvasExample');
+            const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+
+            links.forEach(link => {
+                link.addEventListener('click', function () {
+                    // Remove the active class from all links
+                    links.forEach(l => l.classList.remove('active'));
+                    // Add the active class to the clicked link
+                    this.classList.add('active');
+                    // Close the sidebar
+                    offcanvas.hide();
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

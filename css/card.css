@@ -1,0 +1,48 @@
+ /* General Card Styles */
+ .custom-card {
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+
+.custom-img {
+    /* height: 200px; */
+    /* Fixed height for images */
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+}
+
+/* Card Heights */
+@media (min-width: 992px) {
+
+    /* lg and above */
+    .custom-card {
+        height: 400px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* md */
+    .custom-card {
+        height: 400px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* sm and below */
+    .custom-card {
+        height: auto;
+    }
+}
+
+.carousel-items {
+    display: flex;
+}
+
+.carousel-items .card {
+    flex: 1 0 50%;
+    /* 50% width for each card */
+    max-width: 50%;
+}

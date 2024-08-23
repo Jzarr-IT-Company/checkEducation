@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+</head>
+
+<body>
+    <h1></h1>
+    <input type="file" id="fileInput" multiple accept="videos/*, image/*">
+    <button id="submitButton">Submit</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelector("#submitButton").addEventListener("click", () => {
+            const fileInput = document.querySelector("#fileInput");
+            if (fileInput.files.length > 0) {
+                const formData = new FormData();
+
+                // Loop through all selected files
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    const file = fileInput.files[i];
+                    formData.append('file', file); // Adjust field name according to your backend
+                }
+
+                // Log the FormData contents for debugging
+                for (let pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1].name); // Show each appended file name
+                }
+
+                // Send the FormData to the server
+                axios.post('https://images-apis-cklz.vercel.app/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data' // Set the content type to multipart
+                    }
+                })
+                    .then(response => {
+                        console.log('Files uploaded successfully:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error uploading files:', error);
+                    });
+            } else {
+                console.log('No file selected.');
+            }
+        });
+    </script>
+</body>
+
+</html>

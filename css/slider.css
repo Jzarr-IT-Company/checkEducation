@@ -1,0 +1,60 @@
+/* .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.card-img-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #fff; Change to fit your design
+}
+
+Optional scrollbar styling
+.swiper-scrollbar {
+    background: rgba(0, 0, 0, 0.5);
+    height: 8px;
+}
+.swiper-scrollbar-drag {
+    background: #007aff;
+} */
+
+.swiper {
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+    object-fit: cover; /* Ensures the image covers the area of the card */
+    width: 100%;
+    height: 100%;
+}

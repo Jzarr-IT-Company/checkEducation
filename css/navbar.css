@@ -1,0 +1,34 @@
+.navbar-brand {
+    display: block;
+    margin: 0 auto;
+}
+
+.navbar-custom {
+    background-color: linear-gradient(90deg, #B2BEB5, #064224) !important;
+}
+
+#btn-primary {
+    display: none;
+    /* Default to hide */
+}
+#BG_COLOR{
+    /* background:linear-gradient(90deg, #B2BEB5, #064224); */
+    background:linear-gradient(90deg, white, #1f6421);
+}
+
+/* Show button only on medium screens */
+@media (min-width: 768px) and (max-width: 980px) {
+    #btn-primary {
+        display: inline-block;
+    }
+}
+
+.navbar-brand {
+    margin: 0 auto;
+    /* Center the logo */
+}
+
+.form-control {
+    margin-right: 10px;
+    /* Space between input and button */
+}

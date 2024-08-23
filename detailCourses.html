@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/public/logo.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/loader.css">
+</head>
+
+<body>
+    <section id="header" style="border: none; background: transparent;"></section>
+    <section class="sticky-top" id="navbar"></section>
+    <div class="container py-5">
+        <div class="row" style="display: flex;flex-wrap: wrap-reverse;">
+
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <img id="courseImage" class="img-fluid" alt="">
+                <div class="mt-4">
+                    <h3 id="coursename"></h3>
+                    <p style="text-align: justify;" id="description"></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="border py-4 px-3 rounded-3">
+                    <h3>About of this course</h3>
+                    <div class="">
+                        <h6>Fee:</h6>
+                            <p class="text-capitalize">Free of Cost</p>
+                    </div>
+                    <div class="">
+                        <h6>Who can Join:</h6>
+                            <p class="text-capitalize">Everyone</p>
+                    </div>
+                    <div class="">
+                        <h6>Video Medium: </h6>
+                            <p class="text-capitalize">Urdu & English</p>
+                    </div>
+                    <div class="w-100">
+                        <button class="bttn text-center fw-semibold w-100" id="buyCourse" onclick="buyCourse()">Buy
+                            Course</button>
+                    </div>
+                    <div class="w-100 mt-2">
+                        <button class="bttn text-center fw-semibold w-100" id="buyMoreClass">Buy More courses</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader HTML -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+    <!-- navbar -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) {
+                return parts.pop().split(';').shift();
+            }
+        }
+        const idCookie = getCookie('id');
+        const isCourse = getCookie('isCourse');
+        const token = getCookie('token');
+        // Get the current URL
+        const url = window.location.href;
+
+        // Create a new URL object
+        const urlObj = new URL(url);
+
+        // Get the parameter value by its name
+        const id = urlObj.searchParams.get('cid');
+        const sid = urlObj.searchParams.get('id');
+        const cn = urlObj.searchParams.get('cn');
+        updatedLocalstorage(cn)
+        console.log(cn)
+        document.querySelector("#buyMoreClass").addEventListener('click', () => {
+            if (!token) {
+                localStorage.setItem("buyMore", true)
+                window.location.href = "./signup.html"
+            } else {
+                window.location.href = "./selecteCourses.html"
+            }
+        })
+        console.log(idCookie)
+        document.querySelector("#buyCourse").addEventListener('click', () => {
+            if (!token) {
+                localStorage.setItem("onlineBuy", true)
+                window.location.href = `./signup.html?cn=${cn}`
+
+            } else {
+                //  new code 
+
+
+                //  new code
+
+                let upcourses = JSON.parse(localStorage.getItem(idCookie)) || [];
+
+                axios.post('https://main-server-zeta.vercel.app/courseUpdate', { id: idCookie, courses: upcourses })
+                    .then(response => {
+                        console.log(response)
+                        document.getElementById('loader').style.display = 'none';
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Courses Submit successfully!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then((result) => {
+                            if (result) {
+                               window.location.href =`https://payment-gateway-beryl.vercel.app/?ac=2700`
+                            }
+                        })
+                    })
+                    .catch(error => {
+                        document.getElementById('loader').style.display = 'none';
+                        console.error('Error', error.message);
+                        Swal.fire({
+                            title: 'Error add course. Please try again.',
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'bttn'
+                            }
+                        });
+                    });
+            }
+        })
+
+
+        function updatedLocalstorage(cn) {
+
+            let courses = JSON.parse(localStorage.getItem(idCookie)) || [];
+            let newCourseTem = JSON.parse(localStorage.getItem("newCoursesTem")) || [];
+
+            // Check if the course already exists in the array to prevent duplicates
+            if (!courses.includes(cn)) {
+                // Add the new course to the array
+                courses.push(cn);
+                newCourseTem.push(cn)
+                // Save the updated array back to localStorage
+                localStorage.setItem(idCookie, JSON.stringify(courses));
+                localStorage.setItem("newCoursesTem", JSON.stringify(newCourseTem));
+            } else {
+                Swal.fire({
+                    position: "center",
+                    icon: "warning",
+                    title: "Course already exists!",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                return
+            }
+        }
+    </script>
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    <section id="footer"></section>
+
+    <script src="./js/navbar.js"></script>
+    <script src="./js/headre.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+        integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        // // Get the current URL
+        // const url = window.location.href;
+
+        // // Create a new URL object
+        // const urlObj = new URL(url);
+
+        // // Get the parameter value by its name
+        // const id = urlObj.searchParams.get('cid');
+        // const sid = urlObj.searchParams.get('id');
+
+
+        document.getElementById('loader').style.display = 'flex';
+
+        axios.post('https://main-server-zeta.vercel.app/getCourseById', { id: id })
+            .then(res => {
+                document.getElementById('loader').style.display = 'none';
+                let courses = res.data.data;
+                courses.map((data) => {
+                    document.querySelector("#courseImage").src = data.Courseimage;
+                    document.querySelector("#description").innerHTML = data.coursedescription;
+                    document.querySelector("#coursename").innerHTML = data.coursetitle;
+                })
+            })
+            .catch(error => {
+                document.getElementById('loader').style.display = 'none';
+                console.error('Error fetching data:', error);
+            });
+
+    </script>
+</body>
+
+</html>

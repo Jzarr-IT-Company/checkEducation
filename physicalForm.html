@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical class || Form</title>
+    <link rel="shortcut icon" href="/public/logo.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="container  pt-5 d-flex justify-content-center align-items-center vh-100"
+        style="position: relative;top: 160px;">
+        <div class="form-container">
+            <h5 class=" text-center">Join Class Form</h5>
+            <div class="row mb-3 ">
+                <div class="col-12">
+                    <p class="fw-semibold">First Name</p>
+                    <input type="text" style="font-size: 14px;" class="form-control p-3 fw-semibold"
+                        placeholder="Please Enter Your First Name" id="fname">
+                    <p class="text-danger" id="fnameError"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="fw-semibold">Last Name</p>
+                    <input type="text" style="font-size: 14px;" class="form-control p-3 fw-semibold"
+                        placeholder="Please Enter Your Last Name" id="lname">
+                    <p class="text-danger" id="lnameError"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="fw-semibold">Email Address</p>
+                    <input type="email" style="font-size: 14px;" class="form-control p-3 fw-semibold"
+                        placeholder="Please Enter Your Valid Email" id="email">
+                    <p class="text-danger" id="emailError"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="fw-semibold">Password</p>
+                    <input type="password" style="font-size: 14px;" class="form-control p-3 fw-semibold"
+                        placeholder="Please Enter Strong Password" id="password">
+                    <p class="text-danger" id="passError"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="fw-semibold">Mobile / Whatsapp</p>
+                    <input type="number" style="font-size: 14px;" class="form-control p-3 fw-semibold"
+                        placeholder="Please Enter Your phone no" id="phone">
+                    <p class="text-danger" id="passError"></p>
+                </div>
+            </div>
+            <!-- <select class="form-select py-3" aria-label="Default select example">
+                <option selected>select your class</option>
+                <option value="online class">online class</option>
+                <option value="Physical class">Physical class</option>
+            </select> -->
+            <div class="row mt-4">
+                <button class="bttn fw-semibold " id="createAccount">Join CLass</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader HTML -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add event listener for form submission
+            document.getElementById('createAccount').addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Show loader
+                document.getElementById('loader').style.display = 'flex';
+
+                // Get values from form fields
+                const fname = document.getElementById('fname').value.trim();
+                const lname = document.getElementById('lname').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                // const classType = document.querySelector('select').value;
+                // phone
+                // Regular expressions for validation
+                const nameRegex = /^[A-Za-z]+$/; // Letters only
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email validation
+                const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/; // Minimum 6 chars, including letters and numbers
+
+                // Error message elements
+                const fnameError = document.getElementById('fnameError');
+                const lnameError = document.getElementById('lnameError');
+                const emailError = document.getElementById('emailError');
+                const passError = document.getElementById('passError');
+
+                // Reset error messages
+                fnameError.textContent = '';
+                lnameError.textContent = '';
+                emailError.textContent = '';
+                passError.textContent = '';
+
+                // Validate first name
+                if (!nameRegex.test(fname)) {
+                    fnameError.textContent = 'First name should only contain letters.';
+                }
+
+                // Validate last name
+                if (!nameRegex.test(lname)) {
+                    lnameError.textContent = 'Last name should only contain letters.';
+                }
+
+                // Validate email
+                if (!emailRegex.test(email)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                }
+
+                // If there are no errors, proceed with form submission
+                if (!fnameError.textContent && !lnameError.textContent && !emailError.textContent && !passError.textContent) {
+                    const name = fname + " " + lname;
+                    const obj = {
+                        name,
+                        email,
+                        password,
+                        classType: "physical",
+                        phone
+                    }
+                    // Example: sending form data using Axios
+                    axios.post('https://main-server-zeta.vercel.app/signup', {
+                        ...obj
+                    })
+                        .then(response => {
+                            // Hide loader and show success alert
+                            document.getElementById('loader').style.display = 'none';
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Form submitted successfully!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then((result) => {
+                                if (result) {
+                                    const maxAge = 20 * 365 * 24 * 60 * 60; // 20 years in seconds
+                                    document.cookie = `token=${response.data.token.token}; path=/; max-age=${maxAge}; Secure; SameSite=Strict`;
+                                    document.cookie = `id=${response.data.id}; path=/; max-age=${maxAge}; Secure; SameSite=Strict`;
+                                    window.location.href = './physicalSeectCOurse.html'
+                                }
+                            })
+                        })
+                        .catch(error => {
+                            document.getElementById('loader').style.display = 'none';
+                            Swal.fire({
+                                title: 'Error submitting form. Please try again.',
+                                icon: 'error',
+                                customClass: {
+                                    confirmButton: 'bttn'
+                                }
+                            });
+                        });
+                } else {
+                    document.getElementById('loader').style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
