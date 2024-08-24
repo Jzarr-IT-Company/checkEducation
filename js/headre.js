@@ -54,6 +54,12 @@ if(token){
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
+             <button class="px-3 py-1 fw-semibold rounded-3 text-white border-none; text-decoration-none" style="font-size: 14px;border: none; background-color: #299d09;"id="joinClass" >
+                    <span><i class="fa-solid fa-circle-dot me-2"></i> Join Live Class
+                    </button>
+                     <button class="px-3 py-1 fw-semibold rounded-3 text-white border-none; text-decoration-none" style="font-size: 14px;border: none;background-color: #023901;" id="physicalclasses">
+                   <span><i class="fa-solid fa-computer me-2"></i></span > Physical Class
+                    </button>
                 <div class="py-3 px-2 bg_color">
                     <a href="./index.html" class="link fw-semibold text-dark fs-5 text-decoration-none">Home</a>
                 </div>
@@ -119,6 +125,12 @@ if(token){
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+        <button class="px-3 py-1 fw-semibold rounded-3 text-white border-none; text-decoration-none" style="font-size: 14px;border: none; background-color: #299d09;"id="joinClass" >
+                    <span><i class="fa-solid fa-circle-dot me-2"></i> Join Live Class
+                    </button>
+                     <button class="px-3 py-1 fw-semibold rounded-3 text-white border-none; text-decoration-none" style="font-size: 14px;border: none;background-color: #023901;" id="physicalclasses">
+                   <span><i class="fa-solid fa-computer me-2"></i></span > Physical Class
+                    </button>
             <div class="py-3 px-2 bg_color">
                 <a href="./index.html" class="link fw-semibold text-dark fs-5 text-decoration-none">Home</a>
             </div>
@@ -138,3 +150,20 @@ if(token){
     </div>
 `
 }
+
+document.querySelector("#physicalclasses").addEventListener("click", () => {
+    let physicalCoursesClass = localStorage.getItem("physicalClass")
+        if(physicalCoursesClass){
+            window.location.href = "./waitForResponse.html"
+        }else{
+            window.location.href = "./physicalForm.html"
+        }
+    })
+    document.querySelector("#joinClass").addEventListener("click", () => {
+        if (tokenCookie) {
+            window.location.href = "./selecteCourses.html"
+        } else {
+            window.location.href = "./signup.html"
+        }
+    })
+    
